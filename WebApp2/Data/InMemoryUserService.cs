@@ -1,11 +1,9 @@
-﻿using WebApp2.Models;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
-using WebApp2.Data;
+using WebApp2.Models;
 
-namespace WebApp2.Data.Impl
+namespace WebApp2.Data
 {
     public class InMemoryUserService : IUserService
     {

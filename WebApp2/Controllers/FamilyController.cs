@@ -1,11 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using DNPAssignment1.Data;
+using WebApp2.Data;
 using Microsoft.AspNetCore.Mvc;
 using Models;
+using WebApp2.Data;
 
-namespace WebAPI.Controllers
+namespace WebApp2.Controllers
 {
     [ApiController]
     [Route("[controller]")]

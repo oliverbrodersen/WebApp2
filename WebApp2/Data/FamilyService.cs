@@ -3,78 +3,79 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 using Models;
+using WebApp2.Data;
+using WebApp2.DataAccess;
 
-namespace DNPAssignment1.Data
+namespace WebApp2.Data
 {
     public class FamilyService : IFamilyService
     {
         private string familyFile = "families.json";
-        private IList<Family> families;
+        private FamilyDBContext ctx;
 
-        public FamilyService()
+        public FamilyService(FamilyDBContext ctx)
         {
-            if (!File.Exists(familyFile))
-            {
-                throw new System.NotImplementedException();
-            }
-            else
-            {
-                updateFamilyList();
-                System.Console.WriteLine(families);
-            }
-        }
-
-        private void WriteFamiliesFile()
-        {
-            string productsAsJson = JsonSerializer.Serialize(families);
-            File.WriteAllText(familyFile, productsAsJson);
-            updateFamilyList();
-        }
-
-        public void updateFamilyList()
-        {
-            string content = File.ReadAllText(familyFile);
-            families = JsonSerializer.Deserialize<IList<Family>>(content);
+            this.ctx = ctx;
+           // updateFamilyList();
         }
         
+
+//     private void WriteFamiliesFile()
+//     {
+//         string productsAsJson = JsonSerializer.Serialize(families);
+//         File.WriteAllText(familyFile, productsAsJson);
+//         updateFamilyList();
+//       }
+
+//      public async void updateFamilyList()
+//      {
+//          if (ctx.Families.ToList().Count == 0)
+//          {
+//              string content = File.ReadAllText(familyFile);
+//              families = JsonSerializer.Deserialize<IList<Family>>(content);
+//              foreach (var family in families)
+//              {
+//                  ctx.Families.AddAsync(family);
+//                  await ctx.SaveChangesAsync();
+//              }
+//          }
+//
+//      }
+      
             
         public async Task<IList<Family>> GetFamiliesAsync()
         {
-            List<Family> tmp = new List<Family>(families);
-            return tmp;
+            List<Family> families = await ctx.Families.ToListAsync();
+            foreach (var family in families)
+            {
+                family.Children ??= ctx.Children.Where(c => c.FamilyId == family.Id).ToList();
+                family.Adults ??= ctx.Adults.Where(a => a.FamilyId == family.Id).ToList();
+                family.Pets ??= ctx.Pets.Where(p => p.FamilyId == family.Id).ToList();
+            }
+
+            return families;
         }
         
         public async Task<Family> AddFamilyAsync(Family family)
         {
-            families.Add(family);
-            WriteFamiliesFile();
+            await ctx.Families.AddAsync(family);
+            await ctx.SaveChangesAsync();
             return family;
         }
         
         public async Task RemoveFamilyAsync(string StreetName, int HouseNumber)
         {
-            Family toRemove = families.First(f => (f.StreetName == StreetName && f.HouseNumber == HouseNumber));
-            families.Remove(toRemove);
-            WriteFamiliesFile();
+            Family toRemove = ctx.Families.First(f => (f.StreetName == StreetName && f.HouseNumber == HouseNumber));
+            ctx.Remove(toRemove);
+            await ctx.SaveChangesAsync();
         }
-        
-        public async Task AddPetAsync(string StreetName, int HouseNumber, Pet pet)
-        {
-            Family toUpdate = families.First(f => (f.StreetName == StreetName && f.HouseNumber == HouseNumber));
-            toUpdate.Pets.Add(pet);
-            WriteFamiliesFile();
-        }
-        
-        
+
         public async Task<Family> GetFamilyAsync(string StreetName, int HouseNumber)
         {
-            return families.First(f => (f.StreetName == StreetName && f.HouseNumber == HouseNumber));
+            return await ctx.Families.FirstAsync(f => (f.StreetName == StreetName && f.HouseNumber == HouseNumber));
         }
         
-        public async Task AddAdultAsync(Adult adult, Family family)
-        {
-            family.Adults.Add(adult);
-        }
     }
 }

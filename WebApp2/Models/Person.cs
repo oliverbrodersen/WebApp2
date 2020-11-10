@@ -7,7 +7,9 @@ using System.Linq;
 namespace Models {
 public class Person {
     
+    [Key]
     public int Id { get; set; }
+    public int FamilyId { get; set; }
     [NotNull]
     [Required(AllowEmptyStrings = false)]
     public string FirstName { get; set; }
