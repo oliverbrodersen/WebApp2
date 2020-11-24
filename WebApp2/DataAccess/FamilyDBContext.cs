@@ -21,18 +21,22 @@ namespace WebApp2.DataAccess
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-            modelBuilder.Entity<ChildInterestTable>().HasKey(cit =>
-                new
-                {
-                    cit.Id,
-                    cit.InterestId
-                });
+//            modelBuilder.Entity<ChildInterestTable>().HasKey(cit =>
+//                new
+//                {
+//                    cit.Id,
+//                    cit.InterestId
+//                });
 
-            modelBuilder.Entity<ChildInterestTable>().HasOne(cit => cit.ChildInterest)
-                .WithMany(childInterest => childInterest.ChildInterestTables).HasForeignKey(cit => cit.InterestId);
+//            modelBuilder.Entity<ChildInterestTable>()
+//                .HasOne(cit => cit.ChildInterest)
+//                .WithMany(childInterest => childInterest.ChildInterestTables)
+//                .HasForeignKey(cit => cit.InterestId);
 
-            modelBuilder.Entity<ChildInterestTable>().HasOne(cit => cit.Child)
-                .WithMany(child => child.ChildInterestTables).HasForeignKey(cit => cit.Id);
+//            modelBuilder.Entity<ChildInterestTable>()
+//                .HasOne(cit => cit.Child)
+//                .WithMany(child => child.ChildInterestTables)
+//                .HasForeignKey(cit => cit.Id);
         }
     }
 }

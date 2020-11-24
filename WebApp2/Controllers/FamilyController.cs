@@ -8,8 +8,9 @@ using WebApp2.Data;
 
 namespace WebApp2.Controllers
 {
+
+    [Route("api/[controller]")]
     [ApiController]
-    [Route("[controller]")]
     public class FamilyController : ControllerBase
     {
         private IFamilyService familyService;
@@ -25,6 +26,7 @@ namespace WebApp2.Controllers
             try
             {
                 Family family = await familyService.GetFamilyAsync(streetName, houseNumber);
+                
                 return Ok(family);
             }
             catch (Exception e)
@@ -35,7 +37,8 @@ namespace WebApp2.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Family>> AddFamily([FromBody] Family family) {
+        public async Task<ActionResult<Family>> AddFamily([FromBody] Family family)
+        {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);

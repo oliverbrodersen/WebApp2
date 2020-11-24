@@ -2,7 +2,7 @@
 
 namespace WebApp2.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class initialcommit1 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -10,10 +10,10 @@ namespace WebApp2.Migrations
                 name: "Families",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    StreetName = table.Column<string>(type: "TEXT", nullable: false),
-                    HouseNumber = table.Column<int>(type: "INTEGER", nullable: false)
+                    StreetName = table.Column<string>(nullable: false),
+                    HouseNumber = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -24,7 +24,7 @@ namespace WebApp2.Migrations
                 name: "Interest",
                 columns: table => new
                 {
-                    Type = table.Column<string>(type: "TEXT", nullable: false)
+                    Type = table.Column<string>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -35,15 +35,15 @@ namespace WebApp2.Migrations
                 name: "Users",
                 columns: table => new
                 {
-                    ID = table.Column<int>(type: "INTEGER", nullable: false)
+                    ID = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    UserName = table.Column<string>(type: "TEXT", nullable: true),
-                    Domain = table.Column<string>(type: "TEXT", nullable: true),
-                    City = table.Column<string>(type: "TEXT", nullable: true),
-                    BirthYear = table.Column<int>(type: "INTEGER", nullable: false),
-                    Role = table.Column<string>(type: "TEXT", nullable: true),
-                    SecurityLevel = table.Column<int>(type: "INTEGER", nullable: false),
-                    Password = table.Column<string>(type: "TEXT", nullable: true)
+                    UserName = table.Column<string>(nullable: true),
+                    Domain = table.Column<string>(nullable: true),
+                    City = table.Column<string>(nullable: true),
+                    BirthYear = table.Column<int>(nullable: false),
+                    Role = table.Column<string>(nullable: true),
+                    SecurityLevel = table.Column<int>(nullable: false),
+                    Password = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -54,18 +54,18 @@ namespace WebApp2.Migrations
                 name: "Adults",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    JobTitle = table.Column<string>(type: "TEXT", nullable: true),
-                    FamilyId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    HairColor = table.Column<string>(type: "TEXT", nullable: true),
-                    EyeColor = table.Column<string>(type: "TEXT", nullable: true),
-                    Age = table.Column<int>(type: "INTEGER", nullable: false),
-                    Weight = table.Column<float>(type: "REAL", nullable: false),
-                    Height = table.Column<int>(type: "INTEGER", nullable: false),
-                    Sex = table.Column<string>(type: "TEXT", nullable: true)
+                    FamilyId = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: true),
+                    HairColor = table.Column<string>(nullable: true),
+                    EyeColor = table.Column<string>(nullable: true),
+                    Age = table.Column<int>(nullable: false),
+                    Weight = table.Column<float>(nullable: false),
+                    Height = table.Column<int>(nullable: false),
+                    Sex = table.Column<string>(nullable: true),
+                    JobTitle = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -82,17 +82,17 @@ namespace WebApp2.Migrations
                 name: "Children",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                    Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FamilyId = table.Column<int>(type: "INTEGER", nullable: false),
-                    FirstName = table.Column<string>(type: "TEXT", nullable: false),
-                    LastName = table.Column<string>(type: "TEXT", nullable: true),
-                    HairColor = table.Column<string>(type: "TEXT", nullable: true),
-                    EyeColor = table.Column<string>(type: "TEXT", nullable: true),
-                    Age = table.Column<int>(type: "INTEGER", nullable: false),
-                    Weight = table.Column<float>(type: "REAL", nullable: false),
-                    Height = table.Column<int>(type: "INTEGER", nullable: false),
-                    Sex = table.Column<string>(type: "TEXT", nullable: true)
+                    FamilyId = table.Column<int>(nullable: false),
+                    FirstName = table.Column<string>(nullable: false),
+                    LastName = table.Column<string>(nullable: true),
+                    HairColor = table.Column<string>(nullable: true),
+                    EyeColor = table.Column<string>(nullable: true),
+                    Age = table.Column<int>(nullable: false),
+                    Weight = table.Column<float>(nullable: false),
+                    Height = table.Column<int>(nullable: false),
+                    Sex = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -109,13 +109,13 @@ namespace WebApp2.Migrations
                 name: "Pets",
                 columns: table => new
                 {
-                    RealId = table.Column<int>(type: "INTEGER", nullable: false)
+                    RealId = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    FamilyId = table.Column<int>(type: "INTEGER", nullable: false),
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
-                    Species = table.Column<string>(type: "TEXT", nullable: false),
-                    Name = table.Column<string>(type: "TEXT", nullable: false),
-                    Age = table.Column<int>(type: "INTEGER", nullable: false)
+                    FamilyId = table.Column<int>(nullable: false),
+                    Id = table.Column<int>(nullable: false),
+                    Species = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: false),
+                    Age = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -132,9 +132,9 @@ namespace WebApp2.Migrations
                 name: "ChildInterest",
                 columns: table => new
                 {
-                    InterestId = table.Column<string>(type: "TEXT", nullable: false),
-                    ChildId = table.Column<int>(type: "INTEGER", nullable: false),
-                    InterestType = table.Column<string>(type: "TEXT", nullable: true)
+                    InterestId = table.Column<string>(nullable: false),
+                    ChildId = table.Column<int>(nullable: false),
+                    InterestType = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -157,24 +157,27 @@ namespace WebApp2.Migrations
                 name: "ChildInterestTable",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "INTEGER", nullable: false),
-                    InterestId = table.Column<string>(type: "TEXT", nullable: false)
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    ChildId = table.Column<int>(nullable: true),
+                    InterestId = table.Column<string>(nullable: true),
+                    ChildInterestInterestId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ChildInterestTable", x => new { x.Id, x.InterestId });
+                    table.PrimaryKey("PK_ChildInterestTable", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_ChildInterestTable_ChildInterest_InterestId",
-                        column: x => x.InterestId,
-                        principalTable: "ChildInterest",
-                        principalColumn: "InterestId",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ChildInterestTable_Children_Id",
-                        column: x => x.Id,
+                        name: "FK_ChildInterestTable_Children_ChildId",
+                        column: x => x.ChildId,
                         principalTable: "Children",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        onDelete: ReferentialAction.Restrict);
+                    table.ForeignKey(
+                        name: "FK_ChildInterestTable_ChildInterest_ChildInterestInterestId",
+                        column: x => x.ChildInterestInterestId,
+                        principalTable: "ChildInterest",
+                        principalColumn: "InterestId",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -193,9 +196,14 @@ namespace WebApp2.Migrations
                 column: "InterestType");
 
             migrationBuilder.CreateIndex(
-                name: "IX_ChildInterestTable_InterestId",
+                name: "IX_ChildInterestTable_ChildId",
                 table: "ChildInterestTable",
-                column: "InterestId");
+                column: "ChildId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_ChildInterestTable_ChildInterestInterestId",
+                table: "ChildInterestTable",
+                column: "ChildInterestInterestId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Children_FamilyId",

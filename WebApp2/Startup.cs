@@ -31,7 +31,7 @@ namespace WebApp2
         {
             services.AddControllers();
             services.AddDbContext<FamilyDBContext>();
-            services.AddSingleton<WebApp2.Data.IUserService, InMemoryUserService>();
+            services.AddScoped<IUserService, InMemoryUserService>();
             services.AddScoped<IFamilyService, FamilyService>();
         }
 
